@@ -5,47 +5,31 @@ import java.util.ArrayList;
 
 
 public class FileOptions extends SalesInvoiceGenerator{
-    String FilePath ;
+    static String FilePath ;
     public static void LoadFile()
     {
-        JFileChooser SelectForm = new JFileChooser();
-        int SelectionResult = SelectForm.showOpenDialog(null);
-        if (SelectionResult == JFileChooser.APPROVE_OPTION) {
-             String FilePath = SelectForm.getSelectedFile().getPath();
 
-            FileInputStream LoadingFile = null;
-            int FileSize = 0 ;
-            String FileName = SelectForm.getName();
-            byte [] FileData;
-            InvoicesData.setText(new String (FileName));
-            try {
-                LoadingFile = new FileInputStream(FilePath);
+             CSV_Scanner.ScanCSV();
+//            FileInputStream LoadingFile = null;
+//            int FileSize = 0 ;
+//            String FileName = SelectForm.getName();
+//            byte [] FileData;
+//            InvoicesData.setText(new String (FileName));
+//            try {
+//                LoadingFile = new FileInputStream(FilePath);
+//
+//                FileSize = LoadingFile.available();
+//                FileData = new byte[FileSize];
+//                LoadingFile.read(FileData);
+//
+//            }
+//            catch (IOException LoadException)
+//            {
+//                LoadException.printStackTrace();
+//            }
+//
 
-                FileSize = LoadingFile.available();
-                FileData = new byte[FileSize];
-                LoadingFile.read(FileData);
-
-            }
-            catch (IOException LoadException)
-            {
-                LoadException.printStackTrace();
-            }
-
-            finally {
-                try
-                {
-                    LoadingFile.close();
-                }
-                catch (IOException CannotClose)
-                {
-                    CannotClose.printStackTrace();
-                }
-            }
         }
-        else {JOptionPane.showMessageDialog(null , "There is No File Loaded" ,
-                "File Open is Canceled" , JOptionPane.INFORMATION_MESSAGE);}
-
-    }
     public static void SaveFile()
     {
         JFileChooser SaveForm = new JFileChooser();

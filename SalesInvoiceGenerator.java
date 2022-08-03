@@ -1,5 +1,6 @@
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.text.StyledEditorKit;
 import java.awt.*;
@@ -12,7 +13,13 @@ public class SalesInvoiceGenerator extends JFrame implements ActionListener
     {
         public static JFrame InvoicesFrame = new JFrame();
         public JMenuBar MainMenuBar = new JMenuBar();
-        public JTable InvoicesTable = new JTable(5,4);
+        public static String [] InvoiceTableHeader = new String[] {"No.", "Date", "Customer", "Total"};
+
+        public static String[][] InvoicesTableRows  = new String[][]{{"No.", "Date", "Customer", "Total"},{"", "", "", ""}};
+
+        public static JTable InvoicesTableHeader = new JTable(InvoicesTableRows,InvoiceTableHeader);
+
+        public static JTable InvoicesTable = new JTable(0,4);
         public JTable InvoiceItemsTable = new JTable(5,5);
         public JMenu FileMenu = new JMenu("File");
         public JButton OpenBtn = new JButton("Open");
@@ -85,7 +92,10 @@ public class SalesInvoiceGenerator extends JFrame implements ActionListener
             InvoicesFooterPanel.add(CreateNewInvoiceBtn);
             InvoicesFooterPanel.add(DeleteInvoiceBtn);
             InvoicesPanel.setLayout(new GridLayout(3,1));
-            InvoicesPanel.add(new JLabel("Invoices Table"));
+            //InvoicesPanel.add(new JLabel("Invoices Table"));
+            //InvoicesTableHeader= {"No." , "Date" , "Customer" , "Total"};
+            //InvoicesPanel.add(InvoicesTableHeader);
+            InvoicesPanel.add(InvoicesTableHeader);
             InvoicesPanel.add(InvoicesTable);
             InvoicesPanel.add(InvoicesFooterPanel);
 
@@ -105,7 +115,7 @@ public class SalesInvoiceGenerator extends JFrame implements ActionListener
             MainPanel.add(InvoicesPanel);
             MainPanel.add(InvoiceDetailsPanel);
 
-            InvoicesFrame();
+            //InvoicesFrame();
             InvoicesPanel.add(InvoicesFooterPanel);
             add(MainPanel);
 
@@ -166,17 +176,17 @@ public class SalesInvoiceGenerator extends JFrame implements ActionListener
             }
 
         }
-        public void InvoicesFrame()
-        {
-             String [] InvoicesTableHeader = {"","","",""};
-             String [] [] InvoicesTableDetails =
-                     {
-                     {"","","","",""},
-                     {"","","","",""},
-                     {"","","","",""},
-                     {"","","","",""},
-                     {"","","","",""},
-                     };
-
-        }
+//        public void InvoicesFrame()
+//        {
+//             String [] InvoicesTableHeader = {"","","",""};
+//             String [] [] InvoicesTableDetails =
+//                     {
+//                     {"","","","",""},
+//                     {"","","","",""},
+//                     {"","","","",""},
+//                     {"","","","",""},
+//                     {"","","","",""},
+//                     };
+//
+//        }
     }
